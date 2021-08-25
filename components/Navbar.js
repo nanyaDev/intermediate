@@ -37,7 +37,7 @@ const Navbar = () => {
         )}
         {!username && (
           <>
-            <NextLink href="/welcome" passHref>
+            <NextLink href="/enter" passHref>
               <Button as="a" colorScheme="blue">
                 Log In
               </Button>
