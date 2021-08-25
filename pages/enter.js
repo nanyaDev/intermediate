@@ -3,11 +3,11 @@ import { Box, Flex } from '@chakra-ui/react';
 
 import { LoginOptions, UsernameForm, WelcomeMessage } from '@/components/enter';
 import loginSplash from '@/public/login-splash.jpg';
+import { useAuth } from '@/lib/auth';
 
 const Enter = () => {
-  const user = true;
-  const username = true;
-  // pass
+  const { user, username } = useAuth();
+
   return (
     <Flex grow={1} align="stretch">
       <Box w="50%" pos="relative">

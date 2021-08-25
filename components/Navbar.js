@@ -2,10 +2,10 @@ import NextLink from 'next/link';
 import { Avatar, Button, Flex, Link, Stack } from '@chakra-ui/react';
 
 import { Logo } from '@/styles/icons';
+import { useAuth } from '@/lib/auth';
 
 const Navbar = () => {
-  const user = null;
-  const username = null;
+  const { user, username } = useAuth();
 
   return (
     <Flex

@@ -4,12 +4,15 @@ import 'focus-visible/dist/focus-visible';
 
 import theme from '@/styles/theme';
 import Navbar from '@/components/Navbar';
+import { AuthProvider } from '@/lib/auth';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
-      <Navbar />
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Navbar />
+        <Component {...pageProps} />
+      </AuthProvider>
     </ChakraProvider>
   );
 };
