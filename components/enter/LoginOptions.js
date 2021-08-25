@@ -1,8 +1,9 @@
 import { GithubLogo, GoogleLogo } from '@/styles/icons';
-import { Button, Divider, Heading, Icon, Text, VStack } from '@chakra-ui/react';
+import { Button, Divider, Heading, Icon, Text } from '@chakra-ui/react';
 import { HiOutlineMail } from 'react-icons/hi';
 
 import { useAuth } from '@/lib/auth';
+import Card from './Card';
 
 const LoginOptions = () => {
   const auth = useAuth();
@@ -22,21 +23,6 @@ const LoginOptions = () => {
     </>
   );
 };
-
-const Card = ({ children }) => (
-  <VStack
-    w="sm"
-    mt={4}
-    px={6}
-    py={12}
-    spacing={4}
-    boxShadow="2xl"
-    rounded="lg"
-    align="stretch"
-  >
-    {children}
-  </VStack>
-);
 
 const GithubLoginButton = (props) => (
   <Button
