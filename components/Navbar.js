@@ -4,8 +4,8 @@ import { Avatar, Button, Flex, Link, Stack } from '@chakra-ui/react';
 import { Logo } from '@/styles/icons';
 
 const Navbar = () => {
-  const user = true;
-  const username = true;
+  const user = null;
+  const username = null;
 
   return (
     <Flex
