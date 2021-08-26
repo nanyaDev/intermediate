@@ -37,7 +37,6 @@ const UsernameForm = () => {
       if (inputValue.length >= 3) {
         const ref = firestore.doc(`usernames/${inputValue}`);
         const { exists } = await ref.get();
-        console.log('Firestore read executed!');
         setIsValid(!exists);
         setIsLoading(false);
       }
