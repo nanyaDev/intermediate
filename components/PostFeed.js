@@ -1,5 +1,6 @@
+import Link from 'next/link';
 // prettier-ignore
-import { Box, Flex, Heading, HStack, Icon, IconButton, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, IconButton, Text, VStack } from '@chakra-ui/react';
 import { FaHeart } from 'react-icons/fa';
 
 const PostFeed = ({ posts, admin }) => {
@@ -25,14 +26,24 @@ const PostItem = ({ post, admin }) => {
       borderColor="gray.200"
     >
       <Box>
-        <Heading color="gray.700" mb={4}>
-          {post.title}
-        </Heading>
-        <HStack align="flex-start" spacing={8}>
-          <Text color="gray.500" fontWeight="medium" pb={1}>
-            by @{post.username} • ☕️ {minutesToRead} min read
+        <Link href={`/${post.username}/${post.slug}`} passHref>
+          <Heading as="a" d="block" color="gray.700" mb={4}>
+            {post.title}
+          </Heading>
+        </Link>
+        <Flex align="flex-end">
+          <Link href={`/${post.username}`} passHref>
+            <Text as="a" color="gray.500" fontWeight="medium" pb={1}>
+              by @{post.username}
+            </Text>
+          </Link>
+          <Text color="gray.500" fontWeight="medium" pb={1} mx="6px">
+            •
           </Text>
-        </HStack>
+          <Text color="gray.500" fontWeight="medium" pb={1}>
+            ☕️ {minutesToRead} min read
+          </Text>
+        </Flex>
       </Box>
       <VStack color="gray.400">
         <IconButton
