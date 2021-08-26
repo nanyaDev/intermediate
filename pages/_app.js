@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { ChakraProvider } from '@chakra-ui/react';
 // cf. https://github.com/chakra-ui/chakra-ui/issues/3449
 import 'focus-visible/dist/focus-visible';
@@ -10,6 +11,9 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
       <AuthProvider>
+        <Head>
+          <title>Intermediate</title>
+        </Head>
         <Navbar />
         <Component {...pageProps} />
       </AuthProvider>
