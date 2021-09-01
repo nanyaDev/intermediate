@@ -27,7 +27,7 @@ const PostItem = ({ post, admin }) => {
     >
       <Box>
         <Link href={`/${post.username}/${post.slug}`} passHref>
-          <Heading as="a" d="block" color="gray.700" mb={4}>
+          <Heading as="a" size="lg" d="block" color="gray.700" mb={4}>
             {post.title}
           </Heading>
         </Link>
