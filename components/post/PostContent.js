@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import ReactMarkdown from 'react-markdown';
 // prettier-ignore
 import { Box, Flex, Heading, HStack, IconButton, Text, VStack } from '@chakra-ui/react';
 import { FaHeart } from 'react-icons/fa';
+import Markdown from '../Markdown';
 
 const PostContent = ({ post }) => {
   const createdAt =
@@ -52,7 +52,7 @@ const PostContent = ({ post }) => {
           </Text>
         </VStack>
       </Flex>
-      <ReactMarkdown>{post.content}</ReactMarkdown>
+      <Markdown>{post.content}</Markdown>
     </Box>
   );
 };
