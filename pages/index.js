@@ -44,6 +44,10 @@ const Home = ({ posts: initialPosts }) => {
 
     setPosts(posts.concat(newPosts));
     setLoading(false);
+
+    if (newPosts.length < LIMIT) {
+      setPostsEnd(true);
+    }
   };
 
   return (
@@ -54,7 +58,11 @@ const Home = ({ posts: initialPosts }) => {
           Load More
         </Button>
       )}
-      {postsEnd && <Text>You have reached the end!</Text>}
+      {postsEnd && (
+        <Text fontWeight="medium" color="gray.700" my={16}>
+          You have reached the end! 😱
+        </Text>
+      )}
     </Flex>
   );
 };
