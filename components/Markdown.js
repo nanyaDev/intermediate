@@ -7,7 +7,7 @@ const newTheme = {
   h1: ({ children }) => (
     <Heading
       as="h1"
-      mb={2}
+      mb={6}
       fontSize="30px"
       color="gray.800"
       fontWeight="semibold"
