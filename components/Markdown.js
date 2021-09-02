@@ -7,7 +7,7 @@ const newTheme = {
   h1: ({ children }) => (
     <Heading
       as="h1"
-      mb={6}
+      my={5}
       fontSize="30px"
       color="gray.800"
       fontWeight="semibold"
@@ -18,7 +18,7 @@ const newTheme = {
   h2: ({ children }) => (
     <Heading
       as="h2"
-      mb={2}
+      my={4}
       fontSize="28px"
       color="gray.700"
       fontWeight="semibold"
@@ -29,7 +29,7 @@ const newTheme = {
   h3: ({ children }) => (
     <Heading
       as="h3"
-      mb={2}
+      my={3}
       fontSize="24px"
       color="gray.600"
       fontWeight="medium"
