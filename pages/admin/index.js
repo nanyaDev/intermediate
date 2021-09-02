@@ -37,7 +37,7 @@ const PostList = () => {
       <Flex direction="column" align="center" p={8}>
         <Flex w="container.sm" justify="space-between" align="center" px={4}>
           <Heading color="gray.800" py={4}>
-            Manage your Posts ✍️
+            Manage your Posts 🛠
           </Heading>
           <NextLink href="/admin/create" passHref>
             <Button as="a" colorScheme="blue" rightIcon={<AddIcon />}>

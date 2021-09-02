@@ -9,14 +9,16 @@ export const getStaticProps = async ({ params }) => {
   const userDoc = await getUserWithUsername(username);
 
   let post;
+  let path;
 
   if (userDoc) {
     const postRef = userDoc.ref.collection('posts').doc(slug);
     post = postToJSON(await postRef.get());
+    path = postRef.path;
   }
 
   return {
-    props: { post },
+    props: { post, path },
     revalidate: 10000,
   };
 };
@@ -30,18 +32,16 @@ export const getStaticPaths = async () => {
     return { params: { username, slug } };
   });
 
-  console.log(paths);
-
   return {
     paths,
     fallback: 'blocking',
   };
 };
 
-const Post = ({ post }) => {
+const Post = ({ post, path }) => {
   return (
     <Flex direction="column" align="center" py={16}>
-      <PostContent post={post} />
+      <PostContent post={post} path={path} />
     </Flex>
   );
 };

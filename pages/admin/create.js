@@ -8,6 +8,7 @@ import { Box, Button, Flex, Heading, HStack, Input, Text, Textarea, useToast } f
 import firebase, { fireauth, firestore } from '@/lib/firebase';
 import { useAuth } from '@/lib/auth';
 import Markdown from '@/components/Markdown';
+import { ImageUploader } from '@/components/create';
 
 const Create = () => {
   return (
@@ -98,18 +99,25 @@ const PostForm = () => {
             </Text>
           </>
         )}
-        <HStack alignSelf="flex-end" spacing={4} my={8}>
-          <Button colorScheme="blackAlpha" onClick={() => setPreview(!preview)}>
-            Preview
-          </Button>
-          <Button
-            type="submit"
-            colorScheme="blue"
-            isDisabled={!formState.isDirty || !formState.isValid}
-          >
-            Create Post
-          </Button>
-        </HStack>
+        <Flex justify="space-between" align="center" my={8}>
+          <ImageUploader />
+          <HStack alignSelf="flex-end" spacing={4}>
+            <Button
+              variant="outline"
+              isDisabled={!formState.isDirty || !formState.isValid}
+              onClick={() => setPreview(!preview)}
+            >
+              Preview
+            </Button>
+            <Button
+              type="submit"
+              colorScheme="blue"
+              isDisabled={!formState.isDirty || !formState.isValid}
+            >
+              Create Post
+            </Button>
+          </HStack>
+        </Flex>
       </Flex>
     </Flex>
   );

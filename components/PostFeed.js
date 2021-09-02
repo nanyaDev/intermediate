@@ -46,13 +46,7 @@ const PostItem = ({ post, admin }) => {
         </Flex>
       </Box>
       <VStack color="gray.400">
-        <IconButton
-          icon={<FaHeart size={24} />}
-          variant="ghost"
-          size="lg"
-          borderRadius="100%"
-          aria-label="heart"
-        />
+        <FaHeart size={24} />
         <Text fontSize="lg" fontWeight="semibold">
           {post.heartCount || '0'}
         </Text>

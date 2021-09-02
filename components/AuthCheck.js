@@ -3,10 +3,10 @@ import { Center, Text, Link } from '@chakra-ui/layout';
 
 import { useAuth } from '@/lib/auth';
 
-const AuthCheck = ({ children }) => {
+const AuthCheck = ({ children, fallback }) => {
   const { username } = useAuth();
 
-  return username ? children : <SignInPrompt />;
+  return username ? children : fallback || <SignInPrompt />;
 };
 
 const SignInPrompt = () => (

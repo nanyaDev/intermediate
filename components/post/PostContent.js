@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import Link from 'next/link';
 // prettier-ignore
-import { Box, Flex, Heading, HStack, IconButton, Text, VStack } from '@chakra-ui/react';
-import { FaHeart } from 'react-icons/fa';
-import Markdown from '../Markdown';
+import { Box, Flex, Heading, HStack, Text, useToast, VStack } from '@chakra-ui/react';
 
-const PostContent = ({ post }) => {
+import Markdown from '../Markdown';
+import InteractiveHeart from './InteractiveHeart';
+import AuthCheck from '../AuthCheck';
+import HeartButton from './HeartButton';
+
+const PostContent = ({ post, path }) => {
   const createdAt =
     typeof post?.createdAt === 'number'
       ? new Date(post.createdAt)
@@ -40,20 +44,36 @@ const PostContent = ({ post }) => {
           </Text>
         </Box>
         <VStack color="gray.400" spacing={0}>
-          <IconButton
-            icon={<FaHeart size={24} />}
-            variant="ghost"
-            size="lg"
-            borderRadius="100%"
-            aria-label="heart"
-          />
-          <Text fontSize="lg" fontWeight="semibold">
-            {post.heartCount || '0'}
-          </Text>
+          <AuthCheck
+            fallback={<UninteractiveHeart heartCount={post.heartCount} />}
+          >
+            <InteractiveHeart path={path} heartCount={post.heartCount} />
+          </AuthCheck>
         </VStack>
       </Flex>
       <Markdown>{post.content}</Markdown>
     </Box>
+  );
+};
+
+const UninteractiveHeart = ({ heartCount }) => {
+  const toast = useToast();
+
+  const promptSignIn = () => {
+    toast({
+      title: 'Log In First!',
+      status: 'error',
+      duration: 3000,
+    });
+  };
+
+  return (
+    <>
+      <HeartButton onClick={promptSignIn} />
+      <Text fontSize="lg" fontWeight="semibold">
+        {heartCount || '0'}
+      </Text>
+    </>
   );
 };
 
