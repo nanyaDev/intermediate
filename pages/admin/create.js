@@ -49,6 +49,7 @@ const PostForm = () => {
 
     reset({ title: '', content: '' });
     toast({ title: 'Post created!', status: 'success', duration: 3000 });
+    setPreview(false);
   };
 
   return (
@@ -102,11 +103,7 @@ const PostForm = () => {
         <Flex justify="space-between" align="center" my={8}>
           <ImageUploader />
           <HStack alignSelf="flex-end" spacing={4}>
-            <Button
-              variant="outline"
-              isDisabled={!formState.isDirty || !formState.isValid}
-              onClick={() => setPreview(!preview)}
-            >
+            <Button variant="outline" onClick={() => setPreview(!preview)}>
               Preview
             </Button>
             <Button

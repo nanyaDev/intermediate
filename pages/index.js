@@ -5,7 +5,7 @@ import { firestore } from '@/lib/firebase';
 import { fromMillis, postToJSON } from '@/utils/firebase';
 import PostFeed from '@/components/PostFeed';
 
-const LIMIT = 5;
+const LIMIT = 3;
 
 export const getServerSideProps = async () => {
   const postsQuery = firestore

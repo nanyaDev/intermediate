@@ -1,6 +1,6 @@
-import { GithubLogo, GoogleLogo } from '@/styles/icons';
 import { Button, Divider, Heading, Icon, Text } from '@chakra-ui/react';
-import { HiOutlineMail } from 'react-icons/hi';
+import { GithubLogo, GoogleLogo } from '@/styles/icons';
+import { FaUserSecret } from 'react-icons/fa';
 
 import { useAuth } from '@/lib/auth';
 import Card from './Card';
@@ -15,10 +15,10 @@ const LoginOptions = () => {
         to enjoy all of our cool features ✌️
       </Text>
       <Card>
-        <GithubLoginButton />
+        <GithubLoginButton onClick={() => auth.signinWithGithub()} />
         <GoogleLoginButton onClick={() => auth.signinWithGoogle()} />
         <Divider borderColor="gray.400" />
-        <EmailLoginButton />
+        <AnonLoginButton onClick={() => auth.signinAnonymously()} />
       </Card>
     </>
   );
@@ -59,20 +59,21 @@ const GoogleLoginButton = (props) => (
   </Button>
 );
 
-const EmailLoginButton = () => (
+const AnonLoginButton = (props) => (
   <Button
     backgroundColor="gray.600"
     color="white"
     variant="outline"
     fontWeight="medium"
-    leftIcon={<Icon as={HiOutlineMail} />}
+    leftIcon={<Icon as={FaUserSecret} />}
     _hover={{ bg: 'gray.500' }}
     _active={{
       bg: 'gray.500',
       transform: 'scale(0.95)',
     }}
+    {...props}
   >
-    Continue with Email
+    Continue Anonymously
   </Button>
 );
 

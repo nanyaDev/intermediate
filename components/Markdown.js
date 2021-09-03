@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import ReactMarkdown from 'react-markdown';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
-import { Heading, Text } from '@chakra-ui/layout';
+import { Heading, Link } from '@chakra-ui/layout';
 
 const newTheme = {
   h1: ({ children }) => (
@@ -37,6 +37,7 @@ const newTheme = {
       {children}
     </Heading>
   ),
+  a: ({ children }) => <Link color="blue.500">{children}</Link>,
 };
 
 const Markdown = ({ children }) => (

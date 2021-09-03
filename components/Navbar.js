@@ -5,13 +5,13 @@ import { Logo } from '@/styles/icons';
 import { useAuth } from '@/lib/auth';
 
 const Navbar = () => {
-  const { user, username } = useAuth();
+  const { user, username, signout } = useAuth();
 
   return (
     <Flex
       as="nav"
       justify="space-between"
-      px={8}
+      px={10}
       py={4}
       bg="white"
       borderBottom="1px"
@@ -22,7 +22,7 @@ const Navbar = () => {
           <Logo boxSize="3rem" />
         </Link>
       </NextLink>
-      <Stack spacing={4} isInline align="center">
+      <Stack spacing={6} isInline align="center">
         {username && (
           <>
             <NextLink href="/admin" passHref>
@@ -30,6 +30,7 @@ const Navbar = () => {
                 Write Posts
               </Button>
             </NextLink>
+            <Button onClick={signout}>Sign Out</Button>
             <NextLink href={`/${username}`} passHref>
               <Avatar as="a" name={user?.name} src={user?.photoURL} size="sm" />
             </NextLink>
